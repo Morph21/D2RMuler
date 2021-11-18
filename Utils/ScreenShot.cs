@@ -13,6 +13,7 @@ namespace D2RMuler.Utils
 {
     internal class ScreenShot
     {
+        private static string Folder = "StashImages";
         public static string CaptureApplication(string procName)
         {
             var processArray = Process.GetProcessesByName(procName);
@@ -39,16 +40,16 @@ namespace D2RMuler.Utils
 
                 string name = Guid.NewGuid().ToString().Replace("-", "") + ".png";
 
-                if (!Directory.Exists(Const.dir + "/test"))
+                if (!Directory.Exists(Const.dir + "/" + Folder))
                 {
-                    Directory.CreateDirectory(Const.dir + "/test");
+                    Directory.CreateDirectory(Const.dir + "/" + Folder);
                 }
-                bmp.Save(string.Format(Const.dir + "/test/{0}", name), ImageFormat.Png);
+                bmp.Save(string.Format(Const.dir + "/{0}/{1}", Folder, name), ImageFormat.Png);
                 bmp.Dispose();
 
-                Debug.WriteLine(String.Format("Was file '{0}' saved?", name) + File.Exists(string.Format(AppDomain.CurrentDomain.BaseDirectory + "/test/{0}", name)));
+                Debug.WriteLine(String.Format("Was file '{0}' saved?", name) + File.Exists(string.Format(AppDomain.CurrentDomain.BaseDirectory + "/{0}/{1}", Folder, name)));
 
-                return AppDomain.CurrentDomain.BaseDirectory + "/test/" + name;
+                return AppDomain.CurrentDomain.BaseDirectory + "/" + Folder + "/" + name;
             }
         }
 

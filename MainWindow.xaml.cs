@@ -29,6 +29,7 @@ namespace D2RMuler
             DB.Instance().InitializeDb();
             InitializeComponent();
             ReloadCharactersList();
+            SelectFirstCharacter();
             ctrl = new Controller();
 
             ctrl.SetupKeyboardHooks(new KeyBindAction(this));
@@ -89,6 +90,14 @@ namespace D2RMuler
             CharactersListView.ItemsSource = CharacterStashes;
         }
 
+        private void SelectFirstCharacter()
+        {
+            if (CharactersListView.Items.Count > 0)
+            {
+                CharactersListView.SelectedIndex = 0;
+            }
+        }
+
         private void CharactersListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (e.AddedItems != null && e.AddedItems.Count > 0)
@@ -102,8 +111,6 @@ namespace D2RMuler
                         if (File.Exists(item.ImageSrc))
                         {
                             StashImage.Source = getImage(item.ImageSrc);
-
-                            repaintCanvas();
 
                         } else
                         {
@@ -142,6 +149,7 @@ namespace D2RMuler
         private void repaintCanvas()
         {
             return;
+            
             Rectangle rect = new Rectangle();
             rect.Width = 20;
             rect.Height = 20;

@@ -97,8 +97,8 @@
                                      HorizontalAlignment="Center"
                                      Width="14"
                                      Height="14"
-                                     Name="MinimizeBtn" 
-                                     Margin="0 0 0 6"/>
+                                     Name="MinimizeBtn"
+                                     Margin="0 0 0 6" />
                     <Grid.Style>
                         <Style TargetType="Grid">
                             <Style.Triggers>
@@ -173,21 +173,19 @@
                     </Grid.Style>
                 </Grid>
             </StackPanel>
-
-
         </Grid>
 
         <Grid Grid.Column="0"
-                    Grid.Row="1">
+              Grid.Row="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="50"/>
+                <RowDefinition Height="50" />
                 <RowDefinition Height="70" />
                 <RowDefinition />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            
+
             <Button x:Name="ScreenShot"
                     Content="ScreenShot"
                     HorizontalAlignment="Center"
@@ -226,7 +224,8 @@
                 </Button.Style>
             </Button>
 
-            <Grid Margin="0 10 0 0" Grid.Row="1">
+            <Grid Margin="0 10 0 0"
+                  Grid.Row="1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="30" />
                     <RowDefinition Height="30" />
@@ -300,11 +299,11 @@
             </Grid>
 
             <ListView Background="Transparent"
-                     x:Name="CharactersListView"
-                     BorderThickness="0"
-                     SelectionChanged="CharactersListView_SelectionChanged"
-                     Grid.Row="2"
-                     ScrollViewer.VerticalScrollBarVisibility="Hidden"
+                      x:Name="CharactersListView"
+                      BorderThickness="0"
+                      SelectionChanged="CharactersListView_SelectionChanged"
+                      Grid.Row="2"
+                      ScrollViewer.VerticalScrollBarVisibility="Hidden"
                       ScrollViewer.CanContentScroll="False">
                 <d:ListBox.ItemsSource>
                     <x:Array Type="{x:Type models:CharacterStash}">
