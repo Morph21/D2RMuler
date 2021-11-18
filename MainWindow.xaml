@@ -11,11 +11,18 @@
         Width="1280"
         MinWidth="800"
         MinHeight="600"
-        xmlns:models="clr-namespace:D2RMuler.Db">
+        xmlns:models="clr-namespace:D2RMuler.Db"
+        SizeChanged="Window_SizeChanged"
+        WindowStyle="None"
+        ResizeMode="CanResizeWithGrip"
+        Background="Transparent"
+        AllowsTransparency="True">
 
     <Grid HorizontalAlignment="Stretch"
-          VerticalAlignment="Stretch">
+          VerticalAlignment="Stretch"
+          Background="#0D1B2A">
         <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -23,8 +30,125 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
+
+        <Grid Background="#050A10"
+              Grid.ColumnSpan="2"
+              Name="MenuBar"
+              MouseDown="MenuBar_MouseDown">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Row="0"
+                        Grid.Column="0"
+                        Orientation="Horizontal">
+
+                <Label Foreground="#E0E1DD"
+                       VerticalAlignment="Top"
+                       HorizontalAlignment="Center"
+                       FontSize="15"
+                       FontWeight="Bold">
+                    D2R Muler
+                </Label>
+
+                <StackPanel VerticalAlignment="Center"
+                            HorizontalAlignment="Stretch"
+                            Margin="20 0 0 0">
+                    <Label Foreground="#E0E1DD"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center"
+                           FontSize="12">
+                        Key binds
+                    </Label>
+                    <StackPanel.Style>
+                        <Style TargetType="{x:Type StackPanel}">
+                            <Setter Property="Background"
+                                    Value="#050A10" />
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver"
+                                         Value="True">
+                                    <Setter Property="Background"
+                                            Value="#415A77" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </StackPanel.Style>
+                </StackPanel>
+            </StackPanel>
+
+            <StackPanel Grid.Row="0"
+                        Grid.Column="1"
+                        Orientation="Horizontal"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Right"
+                        Margin="0 0 8 0">
+
+                <Grid Width="24"
+                      Height="24"
+                      x:Name="WindowMaxize"
+                      MouseLeftButtonDown="WindowMaxize_MouseLeftButtonDown">
+                    <fa:ImageAwesome Icon="WindowMaximize"
+                                     VerticalAlignment="Center"
+                                     Foreground="#E0E1DD"
+                                     HorizontalAlignment="Center"
+                                     Width="14"
+                                     Height="14"
+                                     Name="MaximizeBtn" />
+                    <Grid.Style>
+                        <Style TargetType="Grid">
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver"
+                                         Value="True">
+                                    <Setter Property="Background"
+                                            Value="#415A77" />
+                                    <Setter Property="Cursor"
+                                            Value="Hand" />
+                                </Trigger>
+                            </Style.Triggers>
+                            <Setter Property="Background"
+                                    Value="#050A10" />
+                        </Style>
+                    </Grid.Style>
+
+                </Grid>
+
+                <Grid  Width="24"
+                       Height="24"
+                       Name="CloseWindowBtn"
+                       MouseLeftButtonDown="CloseWindowBtn_MouseLeftButtonDown">
+                    <fa:ImageAwesome Icon="Close"
+                                     VerticalAlignment="Center"
+                                     HorizontalAlignment="Center"
+                                     Foreground="#E0E1DD"
+                                     Width="14"
+                                     Height="14" />
+                    <Grid.Style>
+                        <Style TargetType="Grid">
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver"
+                                         Value="True">
+                                    <Setter Property="Background"
+                                            Value="#415A77" />
+                                    <Setter Property="Cursor"
+                                            Value="Hand" />
+                                </Trigger>
+                            </Style.Triggers>
+                            <Setter Property="Background"
+                                    Value="#050A10" />
+                        </Style>
+                    </Grid.Style>
+                </Grid>
+            </StackPanel>
+
+
+        </Grid>
+
         <StackPanel Grid.Column="0"
-                    Grid.Row="0">
+                    Grid.Row="1">
             <Button x:Name="ScreenShot"
                     Content="ScreenShot"
                     HorizontalAlignment="Left"
@@ -48,15 +172,16 @@
                        Grid.ColumnSpan="2"
                        Content="Add new charater"
                        HorizontalAlignment="Center"
-                       VerticalAlignment="Center" />
+                       VerticalAlignment="Center"
+                       Foreground="#E0E1DD" />
 
                 <TextBox Grid.Row="1"
                          Grid.Column="0"
                          Width="90"
-                         Height="20" 
+                         Height="20"
                          VerticalAlignment="Top"
                          HorizontalAlignment="Right"
-                         x:Name="NewCharacterInput"/>
+                         x:Name="NewCharacterInput" />
                 <Button Grid.Row="1"
                         Grid.Column="1"
                         Content="Save"
@@ -65,15 +190,39 @@
                         HorizontalAlignment="Left"
                         VerticalAlignment="Top"
                         Name="NewCharacterSubmit"
-                        Click="NewCharacterSubmit_Click" />
+                        Click="NewCharacterSubmit_Click"
+                        Foreground="#E0E1DD">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Background"
+                                    Value="#1B263B" />
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border Background="{TemplateBinding Background}"
+                                                BorderBrush="#1B263B"
+                                                BorderThickness="1">
+                                            <ContentPresenter HorizontalAlignment="Center"
+                                                              VerticalAlignment="Center" />
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver"
+                                         Value="True">
+                                    <Setter Property="Background"
+                                            Value="#415A77" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
             </Grid>
 
-
-            
             <ListView Background="Transparent"
-                      Name="CharactersListView"
+                      x:Name="CharactersListView"
                       BorderThickness="0"
-                      ItemContainerStyle="{StaticResource CharacterItem}"
                       SelectionChanged="CharactersListView_SelectionChanged">
                 <d:ListView.ItemsSource>
                     <x:Array Type="{x:Type models:CharacterStash}">
@@ -81,24 +230,89 @@
                         <models:CharacterStash Name="Test5" />
                     </x:Array>
                 </d:ListView.ItemsSource>
+                <ListView.Resources>
+                    <Style TargetType="ListViewItem">
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver"
+                                     Value="True">
+                                <Setter Property="Background"
+                                        Value="#415A77" />
+                            </Trigger>
+                            <Trigger Property="IsSelected"
+                                     Value="True">
+                                <Setter Property="Background"
+                                        Value="#778DA9" />
+                            </Trigger>
+                        </Style.Triggers>
+
+                        <Setter Property="Background"
+                                Value="#1B263B" />
+
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="ListViewItem">
+                                    <Border Background="{TemplateBinding Background}"
+                                            Height="40"
+                                            CornerRadius="4"
+                                            Margin="8,2,8,2">
+
+                                        <Grid>
+                                            <Label Content="{Binding Name}"
+                                                   Foreground="White"
+                                                   HorizontalAlignment="Left"
+                                                   VerticalAlignment="Center"
+                                                   FontSize="15" />
+                                            <Button Background="Transparent"
+                                                    Foreground="Transparent"
+                                                    HorizontalAlignment="Right"
+                                                    Width="15"
+                                                    Height="15"
+                                                    BorderThickness="0"
+                                                    Name="DeleteCharacterBtn"
+                                                    Margin="0 0 8 0"
+                                                    Click="DeleteCharacterBtn_Click">
+                                                <fa:ImageAwesome Icon="Trash"
+                                                                 VerticalAlignment="Center"
+                                                                 HorizontalAlignment="Center"
+                                                                 Foreground="Red" />
+                                            </Button>
+                                        </Grid>
+
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+
+                        <Setter Property="ToolTip"
+                                Value="{Binding UpdateDate}" />
+                    </Style>
+                </ListView.Resources>
             </ListView>
 
 
         </StackPanel>
 
         <Image Grid.Column="1"
-               Grid.Row="0"
+               Grid.Row="1"
                x:Name="StashImage"
                HorizontalAlignment="Stretch"
                Height="auto"
                Width="auto"
                Margin="15,15,15,15"
                VerticalAlignment="Stretch"
-               RenderOptions.BitmapScalingMode="Fant" />
+               RenderOptions.BitmapScalingMode="Fant">
+        </Image>
+
+        <Canvas x:Name="Cnv"
+                Grid.Column="1"
+                Grid.Row="1"
+                Margin="15,15,15,15"
+                VerticalAlignment="Stretch"
+                HorizontalAlignment="Stretch" />
 
     </Grid>
-    
-    
+
+
 </Window>
     
     
