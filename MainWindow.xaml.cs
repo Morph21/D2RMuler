@@ -61,6 +61,8 @@ namespace D2RMuler
                     stash.Save();
 
                     StashImage.Source = getImage(screen);
+                    ReloadCharactersList();
+                    CharactersListView.SelectedIndex = 0;
 
                 }
                 else
@@ -174,11 +176,6 @@ namespace D2RMuler
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             repaintCanvas();
-        }
-
-        private void Grid_DragOver(object sender, DragEventArgs e)
-        {
-
         }
 
         private void MenuBar_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
