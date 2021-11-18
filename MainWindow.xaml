@@ -89,6 +89,36 @@
 
                 <Grid Width="24"
                       Height="24"
+                      x:Name="WindowMinimize"
+                      MouseLeftButtonDown="WindowMinimize_MouseLeftButtonDown">
+                    <fa:ImageAwesome Icon="WindowMinimize"
+                                     VerticalAlignment="Bottom"
+                                     Foreground="#E0E1DD"
+                                     HorizontalAlignment="Center"
+                                     Width="14"
+                                     Height="14"
+                                     Name="MinimizeBtn" 
+                                     Margin="0 0 0 6"/>
+                    <Grid.Style>
+                        <Style TargetType="Grid">
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver"
+                                         Value="True">
+                                    <Setter Property="Background"
+                                            Value="#415A77" />
+                                    <Setter Property="Cursor"
+                                            Value="Hand" />
+                                </Trigger>
+                            </Style.Triggers>
+                            <Setter Property="Background"
+                                    Value="#050A10" />
+                        </Style>
+                    </Grid.Style>
+
+                </Grid>
+
+                <Grid Width="24"
+                      Height="24"
                       x:Name="WindowMaxize"
                       MouseLeftButtonDown="WindowMaxize_MouseLeftButtonDown">
                     <fa:ImageAwesome Icon="WindowMaximize"
@@ -147,8 +177,17 @@
 
         </Grid>
 
-        <StackPanel Grid.Column="0"
+        <Grid Grid.Column="0"
                     Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="70" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            
             <Button x:Name="ScreenShot"
                     Content="ScreenShot"
                     HorizontalAlignment="Center"
@@ -156,7 +195,8 @@
                     Margin="0 15 0 0"
                     VerticalAlignment="Center"
                     Width="100"
-                    Click="ScreenShot_Click">
+                    Click="ScreenShot_Click"
+                    Grid.Row="0">
                 <Button.Style>
                     <Style TargetType="{x:Type Button}">
                         <Setter Property="Background"
@@ -186,7 +226,7 @@
                 </Button.Style>
             </Button>
 
-            <Grid Margin="0 10 0 0">
+            <Grid Margin="0 10 0 0" Grid.Row="1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="30" />
                     <RowDefinition Height="30" />
@@ -218,7 +258,7 @@
                                     Value="#E0E1DD" />
                         </Style>
                     </TextBox.Style>
-                    
+
                 </TextBox>
                 <Button Grid.Row="1"
                         Grid.Column="1"
@@ -260,16 +300,19 @@
             </Grid>
 
             <ListView Background="Transparent"
-                      x:Name="CharactersListView"
-                      BorderThickness="0"
-                      SelectionChanged="CharactersListView_SelectionChanged">
-                <d:ListView.ItemsSource>
+                     x:Name="CharactersListView"
+                     BorderThickness="0"
+                     SelectionChanged="CharactersListView_SelectionChanged"
+                     Grid.Row="2"
+                     ScrollViewer.VerticalScrollBarVisibility="Hidden"
+                      ScrollViewer.CanContentScroll="False">
+                <d:ListBox.ItemsSource>
                     <x:Array Type="{x:Type models:CharacterStash}">
                         <models:CharacterStash Name="Test2" />
                         <models:CharacterStash Name="Test5" />
                     </x:Array>
-                </d:ListView.ItemsSource>
-                <ListView.Resources>
+                </d:ListBox.ItemsSource>
+                <ListBox.Resources>
                     <Style TargetType="ListViewItem">
                         <Style.Triggers>
                             <Trigger Property="IsMouseOver"
@@ -325,11 +368,12 @@
                         <Setter Property="ToolTip"
                                 Value="{Binding UpdateDate}" />
                     </Style>
-                </ListView.Resources>
+
+                </ListBox.Resources>
             </ListView>
 
 
-        </StackPanel>
+        </Grid>
 
         <Image Grid.Column="1"
                Grid.Row="1"

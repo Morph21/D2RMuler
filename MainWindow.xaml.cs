@@ -21,7 +21,6 @@ namespace D2RMuler
     public partial class MainWindow : Window
     {
         List<CharacterStash> CharacterStashes = new List<CharacterStash>();
-        List<CharacterStash> MockCharacterStashes = new List<CharacterStash>() { new CharacterStash("test")};
         Controller ctrl;
 
 
@@ -173,11 +172,6 @@ namespace D2RMuler
             return bitmapImage;
         }
 
-        private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
-        {
-            repaintCanvas();
-        }
-
         private void MenuBar_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed)
@@ -202,6 +196,23 @@ namespace D2RMuler
             }
         }
 
+        private void WindowMinimize_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+        }
+
+        public void Window_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            if (this.WindowState == WindowState.Maximized)
+            {
+                this.BorderThickness = new System.Windows.Thickness(7);
+            }
+            else
+            {
+                this.BorderThickness = new System.Windows.Thickness(0);
+            }
+        }
+
         private void SelectionDown()
         {
             if (CharactersListView == null || CharactersListView.Items.IsEmpty)
@@ -216,7 +227,8 @@ namespace D2RMuler
             } else
             {
                 CharactersListView.SelectedIndex = index + 1;
-            }            
+            }
+            CharactersListView.ScrollIntoView(CharactersListView.SelectedItem);
         }
 
         private void SelectionUp()
@@ -235,6 +247,7 @@ namespace D2RMuler
             {
                 CharactersListView.SelectedIndex = index - 1;
             }
+            CharactersListView.ScrollIntoView(CharactersListView.SelectedItem);
         }
 
         class KeyBindAction : IKeybindActions
