@@ -1,6 +1,7 @@
 ﻿using D2RMuler.Db;
 using D2RMuler.Utils;
 using D2RMuler.Utils.KeyListener;
+using D2RMuler.Views;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -213,7 +214,7 @@ namespace D2RMuler
         {
             if (this.WindowState == WindowState.Maximized)
             {
-                this.BorderThickness = new System.Windows.Thickness(7);
+                this.BorderThickness = new System.Windows.Thickness(6);
             }
             else
             {
@@ -281,6 +282,13 @@ namespace D2RMuler
             {
                 _window.SelectionUp();
             }
+        }
+
+        private void KeyBindsButton_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            KeyBindsWindow keyBindsWindow = new KeyBindsWindow();
+            keyBindsWindow.Owner = this;
+            keyBindsWindow.ShowDialog();
         }
     }
 }

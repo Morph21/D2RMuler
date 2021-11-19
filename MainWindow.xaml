@@ -7,8 +7,8 @@
         xmlns:local="clr-namespace:D2RMuler"
         mc:Ignorable="d"
         Title="D2RMuler"
-        Height="800"
-        Width="1280"
+        Height="600"
+        Width="900"
         MinWidth="800"
         MinHeight="600"
         xmlns:models="clr-namespace:D2RMuler.Db"
@@ -57,7 +57,9 @@
 
                 <StackPanel VerticalAlignment="Center"
                             HorizontalAlignment="Stretch"
-                            Margin="20 0 0 0">
+                            Margin="20 0 0 0"
+                            MouseLeftButtonDown="KeyBindsButton_MouseLeftButtonDown"
+                            Name="KeyBindsButton">
                     <Label Foreground="#E0E1DD"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Center"
@@ -73,6 +75,8 @@
                                          Value="True">
                                     <Setter Property="Background"
                                             Value="#415A77" />
+                                    <Setter Property="Cursor"
+                                            Value="Hand" />
                                 </Trigger>
                             </Style.Triggers>
                         </Style>
@@ -174,7 +178,7 @@
                 </Grid>
             </StackPanel>
         </Grid>
-
+    
         <Grid Grid.Column="0"
               Grid.Row="1">
             <Grid.RowDefinitions>
@@ -218,6 +222,8 @@
                                      Value="True">
                                 <Setter Property="Background"
                                         Value="#415A77" />
+                                <Setter Property="Cursor"
+                                        Value="Hand" />
                             </Trigger>
                         </Style.Triggers>
                     </Style>
@@ -291,6 +297,8 @@
                                          Value="True">
                                     <Setter Property="Background"
                                             Value="#415A77" />
+                                    <Setter Property="Cursor"
+                                            Value="Hand" />
                                 </Trigger>
                             </Style.Triggers>
                         </Style>
