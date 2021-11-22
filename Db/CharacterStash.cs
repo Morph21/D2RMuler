@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace D2RMuler.Db
 {
-    public class CharacterStash
+    internal class CharacterStash
     {
         public long? Id { get; set; }
         public string Name { get; set; }

@@ -25,9 +25,7 @@ namespace D2RMuler.Utils.KeyListener
             {
                 return;
             }
-            //Debug.WriteLine(e.KeyboardData.VirtualCode);
 
-            // seems, not needed in the life.
             //54 - "5"
             // 40 strzałka w dół
             // 38 - strzałka w góre
@@ -41,7 +39,7 @@ namespace D2RMuler.Utils.KeyListener
                 if (e.KeyboardData.VirtualCode == 53)
                 {
                     _actions.ScreenshotStash();
-                    e.Handled = true;
+                    //e.Handled = true;
                 }
             }
             else if (e.KeyboardState == GlobalKeyboardHook.KeyboardState.SysKeyDown &&
@@ -50,13 +48,13 @@ namespace D2RMuler.Utils.KeyListener
                 if (e.KeyboardData.VirtualCode == 40)
                 {
                     _actions.SelectionDown();
-                    e.Handled = true;
+                    //e.Handled = true;
                 }
 
                 if (e.KeyboardData.VirtualCode == 38)
                 {
                     _actions.SelectionUp();
-                    e.Handled = true;
+                    //e.Handled = true;
                 }
             }
             else

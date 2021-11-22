@@ -178,7 +178,7 @@
                 </Grid>
             </StackPanel>
         </Grid>
-    
+
         <Grid Grid.Column="0"
               Grid.Row="1">
             <Grid.RowDefinitions>
@@ -382,23 +382,23 @@
 
         </Grid>
 
-        <Image Grid.Column="1"
-               Grid.Row="1"
-               x:Name="StashImage"
-               HorizontalAlignment="Stretch"
-               Height="auto"
-               Width="auto"
-               Margin="15,15,15,15"
-               VerticalAlignment="Stretch"
-               RenderOptions.BitmapScalingMode="Fant">
-        </Image>
+        <Grid Grid.Column="1"
+              Grid.Row="1">
+            <Image x:Name="StashImage"
+                   Height="auto"
+                   Width="auto"
+                   RenderOptions.BitmapScalingMode="Fant"
+                   VerticalAlignment="Stretch"
+                   HorizontalAlignment="Stretch">
+            </Image>
 
-        <Canvas x:Name="Cnv"
-                Grid.Column="1"
-                Grid.Row="1"
-                Margin="15,15,15,15"
-                VerticalAlignment="Stretch"
-                HorizontalAlignment="Stretch" />
+
+            <Canvas x:Name="Cnv"
+                    VerticalAlignment="Stretch"
+                    HorizontalAlignment="Stretch" />
+
+
+        </Grid>
 
     </Grid>
 

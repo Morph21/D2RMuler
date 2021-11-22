@@ -1,18 +1,12 @@
 ﻿using D2RMuler.Db;
-using D2RMuler.Utils;
 using D2RMuler.Utils.KeyListener;
 using D2RMuler.Views;
-using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace D2RMuler
 {
@@ -113,12 +107,14 @@ namespace D2RMuler
                         {
                             StashImage.Source = getImage(item.ImageSrc);
 
-                        } else
+                        }
+                        else
                         {
-                            //TODO Nie znaleziono pliku
+                            StashImage.Source = getImage("Themes/ImageNotFound.png");
                         }
 
-                    } else
+                    }
+                    else
                     {
                         if (File.Exists("Themes/ImageNotFound.png"))
                         {
@@ -127,7 +123,7 @@ namespace D2RMuler
                     }
                 }
             }
-            
+
         }
 
         private void DeleteCharacterBtn_Click(object sender, RoutedEventArgs e)
@@ -145,23 +141,6 @@ namespace D2RMuler
                 }
             }
 
-        }
-
-        private void repaintCanvas()
-        {
-            return;
-            
-            Rectangle rect = new Rectangle();
-            rect.Width = 20;
-            rect.Height = 20;
-            rect.StrokeThickness = 2;
-            rect.Fill = Brushes.Sienna;
-            Cnv.Children.Clear();
-            Cnv.Children.Add(rect);
-            Cnv.Width = StashImage.ActualWidth;
-            Cnv.Height = StashImage.ActualHeight;
-            Canvas.SetLeft(rect, StashImage.ActualWidth / 2 - 10);
-            Canvas.SetTop(rect, StashImage.ActualHeight / 2 - 10);
         }
 
         private BitmapImage getImage(string path)
@@ -199,7 +178,8 @@ namespace D2RMuler
             if (this.WindowState == WindowState.Maximized)
             {
                 this.WindowState = WindowState.Normal;
-            } else
+            }
+            else
             {
                 this.WindowState = WindowState.Maximized;
             }
@@ -233,7 +213,8 @@ namespace D2RMuler
             if (index == -1 || index == count - 1)
             {
                 CharactersListView.SelectedIndex = 0;
-            } else
+            }
+            else
             {
                 CharactersListView.SelectedIndex = index + 1;
             }
@@ -290,5 +271,6 @@ namespace D2RMuler
             keyBindsWindow.Owner = this;
             keyBindsWindow.ShowDialog();
         }
+
     }
 }
