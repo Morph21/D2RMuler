@@ -34,7 +34,9 @@
         <Grid Background="#050A10"
               Grid.ColumnSpan="2"
               Name="MenuBar"
-              MouseDown="MenuBar_MouseDown">
+              MouseDown="MenuBar_MouseDown"
+              MouseMove="MenuBar_MouseMove"
+              MouseUp="MenuBar_MouseUp">
             <Grid.RowDefinitions>
                 <RowDefinition />
             </Grid.RowDefinitions>
@@ -82,7 +84,36 @@
                         </Style>
                     </StackPanel.Style>
                 </StackPanel>
+
+                <StackPanel VerticalAlignment="Center"
+                            HorizontalAlignment="Stretch"
+                            Margin="20 0 0 0"
+                            MouseLeftButtonDown="SearchForRalButton_MouseLeftButtonDown"
+                            Name="SearchForRalButton">
+                    <Label Foreground="#E0E1DD"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center"
+                           FontSize="12">
+                        Search for RAL
+                    </Label>
+                    <StackPanel.Style>
+                        <Style TargetType="{x:Type StackPanel}">
+                            <Setter Property="Background"
+                                    Value="#050A10" />
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver"
+                                         Value="True">
+                                    <Setter Property="Background"
+                                            Value="#415A77" />
+                                    <Setter Property="Cursor"
+                                            Value="Hand" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </StackPanel.Style>
+                </StackPanel>
             </StackPanel>
+            
 
             <StackPanel Grid.Row="0"
                         Grid.Column="1"
